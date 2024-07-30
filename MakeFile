@@ -1,0 +1,16 @@
+CC = g++
+CFLAGS = -std=c++14 -Iinclude
+SRC = src/main.cpp src/scheduling_algorithms/RoundRobin.cpp src/utils/Parser.cpp
+OBJ = $(SRC:.cpp=.o)
+EXEC = ProcessScheduling
+
+all: $(EXEC)
+
+$(EXEC): $(OBJ)
+    $(CC) $(OBJ) -o $@
+
+%.o: %.cpp
+    $(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+    rm -f $(OBJ) $(EXEC)
